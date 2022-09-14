@@ -1,0 +1,63 @@
+HASHING
+
+In hashing search, insert and delete can be done in O(1) on average.
+Hashing will be the ebst choice than other data structures like arrays,BST etc...
+Hashing is the best choice only if we want to use operations like search, insert and delete opearations only.
+But not useful for:
+  - finding the closest value.
+  -sorted data
+  -prefix searching
+Applications of Hashing: second most used data structure.
+  --Dictionaries
+  --Database indexing
+  --cryptography
+  --caches
+  --symbol tables in compilers/interpreters
+  --routers
+  --getting data from databases etc....
+The problem with the arrays data structure or direct address table is it cant handle large inpit vaalues like phone numbers which contains 10 digit numbers and also floating
+pount numbers,
+
+Hashing INTRO:
+How hash funtion works?
+-- should always map a large key to same small key
+-- should generate values from 0 to m-1
+-- should be fast, O(1) for integers and O(len) for string of length len
+-- should uniformly distribute learge keys into hash table slots.
+
+Example of hash functions:
+1) h(large_key) = large_key%m
+2) for strings, weighted sum:
+    str[] = "abcd"
+    (str[0]*x^0+str[1]*x^1+str[2]*x^2+str[3]*x^3)%m
+ 3) universal hashing
+ 
+ Here we are doing modulus of a specific number while allocating the numbers to keys, so there might be cases where one value might be repeated when doing the modulus
+ function, so there will be a problem of collision. So we can talk about collision handlinbg.
+ ex: 132%10 = 2 and also 142%10 = 2 so these two values might be collided while alloting to the hash table
+ COLLISION HANDLING:
+ If we know the keys in advance, then we can find the perfect hasing function.
+ If we do not know the keys, then we use one of the following
+  -- chaining
+  --Open addressing
+      -- Linear probing
+      -- Quadratic probing
+      -- Double hashing.
+CHAINING:
+Chaining will works with array of llinked lists, where if there is collision in the keys, then it will form an extra node with the existing one and start implementing the 
+linked list from that node. Eg...
+Hash(key) = key%7
+keys = {50,21,58,17,15,49,56,22,23,25}
+
+0 -> 21 ->49 ->56
+1 -> 50 ->15 ->22
+2 -> 58 ->23
+3 -> 17
+4 -> 25
+5
+6
+
+IMPLEMENTATION OF CHAINING:
+
+
+ 
