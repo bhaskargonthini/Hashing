@@ -207,5 +207,69 @@ struct MyHash
 	        cout<<"No"<<endl;
 	} 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+UNORDERED SET IN STL: there cannot be duplicate keys in unordered set.
+
+unlike set, unordered set has different functionalities. If we insert elements in unordered set, when we print the ouput the output sequences may differ in different compilers. There is no specific order in which these elements are stored in the unordered set.
+Different functions of unordered set are:
+insert() - insert an element into the set.
+begin() - returns the iterator of first element
+end()- return an ietrator beyond the end element.
+size() - gives the size of the set
+clear() - empties the set
+find() - finds the element in the set. If present it return the address of that element. Else it return variableName.end().
+count() - returns either 1 or 0 if elements is present or not. similar to find but it returns 1 or 0.
+Erase() - used to remove a single item or range of items in the set.
+all functions have O(1) time complexity in an average.
+#include <bits/stdc++.h> 
+using namespace std; 
+
+int main(){
+    
+    unordered_set <int> s;
+    s.insert(10);
+    s.insert(5);
+    s.insert(15);
+    s.insert(20);
+    for(int x: s)
+        cout<<x<<" ";
+        
+    cout<<endl;
+    for(auto it=s.begin();it!=s.end();it++)
+        cout<<*it<<" ";
+    cout<<endl;
+    cout<<s.size()<<endl;
+    s.clear();
+    cout<<s.size()<<endl;
+    
+    s.insert(10);
+    s.insert(5);
+    s.insert(15);
+    s.insert(20);
+    cout<<s.size()<<endl;
+    
+    if(s.find(15)==s.end())
+        cout<<"Not Found";
+    else
+        cout<<"Found "<<(*s.find(15));
+    
+    cout<<endl;   
+    if(s.count(15))
+        cout<<"Found";
+    else
+        cout<<"Not Found";
+    cout<<endl;
+    
+    cout<<s.size()<<endl;
+    s.erase(15);
+    cout<<s.size()<<endl;
+    auto it=s.find(10);
+    s.erase(it);
+    cout<<s.size()<<endl;
+    
+    s.erase(s.begin(),s.end());
+        
+    return 0;
+}
+
 
  
