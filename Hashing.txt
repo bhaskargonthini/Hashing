@@ -311,6 +311,85 @@ int main(){
         
     return 0;
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------COUNT DISTNCT ELEMENTS:
+
+int countDistinct(int arr[], int n)
+{
+    unordered_set<int> us;
+    for(int i = 0; i < n; i++)
+      us.insert(arr[i]);
+      
+    return us.size();
+}
+
+Another variation:
+COUNT NON REPEATED ELEMENTS:
+Hashing is very useful to keep track of the frequency of the elements in a list.
+
+You are given an array of integers. You need to print the count of non-repeated elements in the array.
+
+Example 1:
+
+Input:
+10
+1 1 2 2 3 3 4 5 6 7
+
+Output: 
+4
+
+Explanation: 
+4, 5, 6 and 7 are the 
+elements with frequency 1 and rest 
+elements are repeated so the number 
+of non-repeated elements are 4.
+
+int countNonRepeated(int arr[], int n)
+    {
+        //Your code here
+        unordered_set<int> set1;
+        unordered_set<int> set2;
+        for(int i=0;i<n;i++){
+            if(set1.count(arr[i]) == 0)
+            set1.insert(arr[i]);
+            else if(set2.count(arr[i]) == 0)
+            set2.insert(arr[i]);
+        }
+        return (set1.size()-set2.size());
+    }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Print Non-Repeated Elements:
+Hashing is very useful to keep track of the frequency of the elements in a list.
+
+You are given an array of integers. You need to print the non-repeated elements as they appear in the array.
+
+Example 1:
+
+Input:
+n = 10
+arr[] = {1,1,2,2,3,3,4,5,6,7}
+Output: 4 5 6 7
+Explanation: 4, 5, 6 and 7 are the only 
+elements which is having only 1 
+frequency and hence, Non-repeating.
+
+vector<int> printNonRepeated(int arr[],int n)
+    {
+        //Your code here
+        vector<int> res;
+        unordered_map<int,int> s;
+        for(int i=0;i<n;i++){
+            s[arr[i]]++;
+        }
+        for(int i=0;i<n;i++){
+            if(s[arr[i]] == 1)
+            res.push_back(arr[i]);
+        }
+        return res;
+        
+    }
+    
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 
 
 
