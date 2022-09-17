@@ -437,6 +437,34 @@ int doUnion(int a[], int n, int b[], int m)  {
     }
     
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PAIR WITH GIVEN SUM IN UNSORTD ARRAY:
+    
+If the array is sorted then we can use two pointer pointer approach to solve the problem efficiently. But if the array is unsorted then we must use hashing technique to solve the problem.
+
+The logic is to traverse through the array and if we find sum-arr[i] in the already traversed array and hashtable then we find the pair else insert the element in the hashtable.
+
+I/P: 3,2,8,15,-8
+SUM: 17
+-- 17-3 = 14(there is nothing in the hashtable in 1st iteration so it simply inserts the element. HASHTABLE: 3
+-- 17-2 = 15 (no 15 in hashtable, it inserts 2 in hashtable)  HASHTABLE: 3,2
+-- 17-8 = 9 (no 9 in hashtable, it inserts 8 in hashtable)  HASHTABLE: 3,2,8
+-- 17-15 = 2 (2 is present in the hashtable: 3,2,8 so we found the pair with given sum)
+
+int pairWithSumX(int arr[],int n, int X)
+{
+    unordered_set<int> us;
+    for(int i = 0; i < n; i++)
+    {
+        if(us.find(X - arr[i]) != us.end())
+          return 1;
+          
+        us.insert(arr[i]);
+    }
+    return 0;
+    
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     
 
 
