@@ -498,7 +498,7 @@ Time complexity: O(n).
  
  The approach is similar to the previous approach (sub array with zero sum), here we subtract with given sum and checks whether it is already present in the array.
  we insert all presum elements in the hashtable first.
- I/P: 5,8,6,13,3,-1
+ I/P: 5,8,6,13,3,-1, sum = 22
  hashtable with presum: 5,13,19,32,35,34
  
  then we go to each element in hashtable and keeps subtracting it with given sum, If we find the result present in the hashtable then we returns.
