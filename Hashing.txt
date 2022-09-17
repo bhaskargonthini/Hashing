@@ -491,10 +491,38 @@ int ZeroSumSubarray(int arr[], int n)
     return 0;
     
 }
+Time complexity: O(n).
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ SUB ARRAY WITH GIVEN SUM:
+ 
+ The approach is similar to the previous approach (sub array with zero sum), here we subtract with given sum and checks whether it is already present in the array.
+ we insert all presum elements in the hashtable first.
+ I/P: 5,8,6,13,3,-1
+ hashtable with presum: 5,13,19,32,35,34
+ 
+ then we go to each element in hashtable and keeps subtracting it with given sum, If we find the result present in the hashtable then we returns.
  
  
+ 
+ bool isSum(int arr[], int n, int sum)
+{
+    unordered_set<int> s;
+    int pre_sum = 0;
+    for(int i = 0; i < n; i++)
+    {   
+        if(pre_sum==sum) // checks the corner case where 0th element+ ith element might result in the given sum.
+            return true;
+        pre_sum += arr[i];
+        if(s.find(pre_sum-sum) != s.end())
+          return true;
+        s.insert(pre_sum);
+    }
+    return false;
+}
+
+Time complexity: O(n).
+
 
 
 
