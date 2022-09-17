@@ -501,6 +501,17 @@ Time complexity: O(n).
  I/P: 5,8,6,13,3,-1, sum = 22
  hashtable with presum: 5,13,19,32,35,34
  
+ we have a corner case here if we dont write the line 
+if(pre_sum==sum) // checks the corner case where 0th element+ ith element might result in the given sum.
+            return true; 
+	    eg: I/P: 1,2,4,7,  sum = 3
+	      presum = 1,3,7,14
+	      so when we are checking the above in the code we have
+	      1-3 = -2
+	      3-3 = 0
+	      7-3 = 4
+	      14-3 = 11 all are not present in the hashtable. But there is a sub array with given sum which is 2+1 the first two elements.
+ 
  then we go to each element in hashtable and keeps subtracting it with given sum, If we find the result present in the hashtable then we returns.
  
  
