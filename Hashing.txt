@@ -531,8 +531,48 @@ if(pre_sum==sum) // checks the corner case where 0th element+ ith element might 
     }
     return false;
 }
-
 Time complexity: O(n).
+
+ANOTHER VARIATION: 
+THE ABOVE SOLUTION IS FOR IF THEY ASK FOR ONLY ONE SUB SET, BUT if they ask for
+SUB ARRAY WITH GIVE SUM: WE SHOULD PRINT THE COUNT OF ALL SUB ARRAYS WHICH GIVES THE SUM.
+
+Then we should use the hashmap to store the count of all the prefix-sum value frequencies in the array:
+
+eg: I/P: Input:
+n = 5
+arr[] = {10,2,-2,-20,10}
+sum = -10
+Output: 3
+Explanation: Subarrays with sum -10 are: 
+[10, 2, -2, -20], [2, -2, -20, 10] and 
+[-20, 10].
+
+For the above solution: The prefix sum values are:
+  	presum : 10 12 10 -10 0
+	Presum-sum frequencies in the hasmap: 20 22 20 0 10
+	20 - 2
+	22 -1
+	0 - 1
+	10 - 1
+So we add the count of frequencies in map if there is a match to the presum-sum in the map: count+=m[presum-sum];
+int subArraySum(int arr[], int n, int sum)
+    {
+        //Your code here
+        //int count = 0;
+        unordered_map<int, int> m;
+        int presum = 0, count = 0;
+        for(int i=0;i<n;i++){
+            presum+=arr[i];
+            if(presum == sum)
+            count++;
+            if(m.find(presum-sum)!=m.end())
+            count+=m[presum-sum];
+            m[presum]++;
+        }
+        return count;
+    }
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 PAIR WITH A GIVEN SUM IN AN ARRAY:
