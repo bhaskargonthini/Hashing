@@ -639,6 +639,67 @@ vector<string> winner(string arr[],int n)
     
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Positive Negative Pair
+EasyAccuracy: 49.71%Submissions: 21242Points: 2
+Given an array of distinct integers, find all the pairs having both negative and positive values of a number in the array.
 
+
+Example 1:
+
+Input:
+n = 8
+arr[] = {1,3,6,-2,-1,-3,2,7}
+Output: -1 1 -3 3 -2 2
+Explanation: 1, 3 and 2 are present 
+pairwise positive and negative. 6 and 
+7 have no pair.
+
+Using only unordered set:
+ vector <int> findPairs(int arr[], int n) 
+    {
+        // code here
+        vector<int> res;
+        unordered_set<int> s;
+        for(int i=0;i<n;i++){
+            if(arr[i] == 0)
+            continue;
+            s.insert(arr[i]);
+            int x = -1*arr[i];
+            if(s.find(x)!=s.end() and s.find(arr[i])!=s.end()){
+                if(x>0){
+                    x*=-1;
+                    res.push_back(x);
+                    res.push_back(abs(x));
+                    s.erase(x);
+                    s.erase(abs(x));
+                }
+                else{
+                  res.push_back(x);
+                res.push_back(abs(x));
+                s.erase(x);
+                x*=-1;
+                s.erase(x);  
+                }
+                
+            }
+        }
+        return res;
+    }
+   
+   Using unordered Map:
+   vector<int> v;
+       unordered_map<int, int> map;
+       
+       for(int i = 0; i < n; i++)
+       {
+           if(map[abs(arr[i])]) 
+           {
+               v.push_back(abs(arr[i]) * -1);
+               v.push_back(abs(arr[i]));
+           }
+           else map[abs(arr[i])]++;
+       }
+       return v;
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  
