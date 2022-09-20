@@ -14,7 +14,7 @@ Applications of Hashing: second most used data structure.
   --caches
   --symbol tables in compilers/interpreters
   --routers
-  --getting data from databases etc....
+  --getting data from databases etc.....
 The problem with the arrays data structure or direct address table is it cant handle large inpit vaalues like phone numbers which contains 10 digit numbers and also floating
 pount numbers,
 
