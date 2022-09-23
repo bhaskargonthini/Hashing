@@ -738,6 +738,35 @@ Using only unordered set:
            else map[abs(arr[i])]++;
        }
        return v;
- -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+ -------------------------------------------------------------------------------------------
+ LONGEST SUB ARRAY WITH GIVEN SUM:
  
+ I/P: 8,3,1,5,-6,6,2,2
+ sum: 4
+ pre sum = 8 11 12 17 19 21
+ 
+ The logic here is we store the indexes of every presum in which they are appearing the array and we only store the left most or the oldest occurance index if there are multiple occurances so that we get longest sub array.
+ 
+ int largestSubarrayWithSumX(int arr[], int n, int sum)
+{
+    int prefix_sum = 0;
+    unordered_set<int> us;
+    us.insert(0);
+    for(int i = 0; i < n; i++)
+    {
+        prefix_sum += arr[i];
+        if(us.find(prefix_sum - sum) != us.end())
+          return 1;
+        us.insert(prefix_sum);
+    }
+    return 0;
+}
+ ------------------------------------------------------------------------
+Longest Subarray with equal number of 0s and 1s:
+
+I/P: 1 0 1 1 1 0 0
+O/P: 0 1 1 1 0 0 = 3 0's 3 1's = 6
+
+We can convert this solution into sub array with zero sum by converting all 0's to -1 so that we just need to find the sub array with zero sum where 1 will cancel ech other if there are equal number.
+
+
