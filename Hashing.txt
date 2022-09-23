@@ -794,5 +794,67 @@ int largestZeroSubarray(int arr[], int n)
     return maxLen;
 }
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LONGEST COMMON SPAN WITH SAME SUM IN BINARY ARRAY:
+the starting anf ending index should be same in both arrays and also the sum of these elements inside these indexs range should also be same.
+
+I/P: 0 1 0 0 0 0
+     1 0 1 0 0 1 
+O/P: 4
+
+I/P: 0 1 0 1 1 1 1
+     1 1 1 1 1 0 1 
+O/P: => 6
+
+I/P: 0 0 0
+     1 1 1
+O/P: 0
+
+I/P: 0 0 1 0
+     1 1 1 1
+O/P: 1
+
+We can reduce the problem into the problem of finding the longest subarray with zero sum.
+Hint: by subtracting the two given arrays in the third array.
+for(int i=0;i<n;i++)
+temp[i] = arr1[i]-arr2[i];
+
+temp for eg1: -1 1 -1 0 0 -1
+now we need to find the longest sub array with zero sum in this temp array.
+
+int longestCommonSum(bool arr1[], bool arr2[], int n) 
+{ 
+	// Find difference between the two 
+	int arr[n]; 
+	for (int i=0; i<n; i++) 
+	arr[i] = arr1[i] - arr2[i]; 
+	
+	// Creates an empty hashMap hM 
+	unordered_map<int, int> hM; 
+
+	int sum = 0;	 // Initialize sum of elements 
+	int max_len = 0; // Initialize result 
+
+	// Traverse through the given array 
+	for (int i = 0; i < n; i++) 
+	{ 
+		// Add current element to sum 
+		sum += arr[i]; 
+
+		// To handle sum=0 at last index 
+		if (sum == 0) 
+			max_len = i + 1; 
+
+		// If this sum is seen before, 
+		// then update max_len if required 
+		if (hM.find(sum) != hM.end()) 
+		max_len = max(max_len, i - hM[sum]); 
+			
+		else // Else put this sum in hash table 
+			hM[sum] = i; 
+	} 
+
+	return max_len; 
+} 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
