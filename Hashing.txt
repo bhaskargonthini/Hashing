@@ -738,7 +738,7 @@ Using only unordered set:
            else map[abs(arr[i])]++;
        }
        return v;
- -------------------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------
  LONGEST SUB ARRAY WITH GIVEN SUM:
  
  I/P: 8,3,1,5,-6,6,2,2
@@ -761,12 +761,38 @@ Using only unordered set:
     }
     return 0;
 }
- ------------------------------------------------------------------------
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Longest Subarray with equal number of 0s and 1s:
 
 I/P: 1 0 1 1 1 0 0
 O/P: 0 1 1 1 0 0 = 3 0's 3 1's = 6
 
 We can convert this solution into sub array with zero sum by converting all 0's to -1 so that we just need to find the sub array with zero sum where 1 will cancel ech other if there are equal number.
+
+int largestZeroSubarray(int arr[], int n)
+{
+    for(int i = 0; i < n; i++)
+     arr[i] = (arr[i] == 0) ? -1 : 1;
+     
+    unordered_map<int, int> ump;
+    int sum = 0, maxLen = 0;
+    for(int i = 0; i < n; i++)
+    {
+        sum += arr[i];
+        if(sum == 0)
+         maxLen = i+1;
+         
+        if(ump.find(sum+n) != ump.end())
+        {
+            if(maxLen < i - ump[sum+n])
+             maxLen = i - ump[sum+n];
+             
+        }
+        else ump[sum + n] = i;
+    }
+    
+    return maxLen;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
