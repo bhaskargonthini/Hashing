@@ -4,7 +4,7 @@ This is th hashing notes, we can able to under the concepts and able to revise t
 Hashing is used to decrease the time complexity for some problems and able insert, remove and search in O(1) time complexity. But hashing inclused an extra space of O(n) space.
 
 In hashing search, insert and delete can be done in O(1) on average.
-Hashing will be the ebst choice than other data structures like arrays,BST etc.....
+Hashing will be the ebst choice than other data structures like arrays,BST etc...
 Hashing is the best choice only if we want to use operations like search, insert and delete opearations only.
 But not useful for:
   - finding the closest value.
